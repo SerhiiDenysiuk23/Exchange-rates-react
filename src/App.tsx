@@ -8,9 +8,11 @@ function App() {
     const [currency, setCurrency] = useState<Currency[]>([])
     const [headerData, setHeaderData] = useState<Currency[]>([])
     const currencyCodes = ["USD", "EUR"]
-    const [refresh, setRefresh] = useState(false)
 
     useEffect(() => {
+        // const testData = [{code: "UAH", rate: 1}, {code: "USD", rate: 37}, {code: "EUR", rate: 36}]
+        // setCurrency(testData)
+        // setHeaderData(testData.filter(item => currencyCodes.includes(item.code)))
         requestAPI().then(
             resp => {
                 if (resp) {
@@ -32,7 +34,9 @@ function App() {
                 currency.length
                     ? <>
                         <Header currencyArray={headerData}/>
-                        <Converter currencyArray={currency}/>
+                        <div className={"wrapper_converter"}>
+                            <Converter currencyArray={currency}/>
+                        </div>
                     </>
                 : null
             }

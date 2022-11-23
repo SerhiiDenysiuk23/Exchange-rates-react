@@ -20,7 +20,7 @@ code {
 
 .header{
   width: 100%;
-  background: red;
+  background: #212323;
 }
 
 ul{
@@ -31,15 +31,45 @@ ul{
   align-items: center;
   list-style-type: none;
   flex-wrap: wrap;
-  /*flex-direction: row;*/
 }
 ul>li{
   width: 120px;
   padding: 10px 0;
-  background: blue;
-  /*margin: 0 50px;*/
+  color: #eee9e9;
   flex: 120px;
   text-align: center;
-
-  /*margin: 20px 20px;*/
 }
+
+.wrapper_converter{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 94vh;
+}
+
+.exchangeRates{
+  display: flex;
+  width: fit-content;
+  justify-content: space-between;
+  background: #cbcbcb;
+}
+
+.inputBlock{
+  height: 50px;
+  margin: 30px;
+  border-radius: 20px;
+  background: #ffffff;
+}
+.inputBlock>*{
+  font-size: 1em;
+  height: 100%;
+  padding: 5px 10px;
+  border: 1px white solid;
+  color: #828282;
+  border-radius: inherit;
+  outline: none;
+}
+.inputBlock>select{
+  cursor: pointer;
+}
+.inputBlock>input{}

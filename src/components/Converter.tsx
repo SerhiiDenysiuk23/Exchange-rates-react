@@ -1,9 +1,10 @@
-import React, {FC, RefObject, useEffect, useRef, useState} from 'react';
+import React, {CSSProperties, FC, RefObject, useEffect, useRef, useState} from 'react';
 import {Currency} from "../types/currency";
 
 interface Props {
     currencyArray: Currency[],
     defaultFrom?: Currency
+    styles?: CSSProperties
 }
 
 interface BlockProps{
@@ -15,9 +16,11 @@ interface BlockProps{
     myRef?: RefObject<HTMLInputElement>
 }
 
+
+
 const InputBlock: FC<BlockProps> = ({myRef , currencyArray, selectDefault, setInputHandler, setSelectHandler, inputValue}) => {
     return (
-        <div>
+        <div className={"inputBlock"}>
             <input ref={myRef} onChange={e => {
                 setInputHandler(Number(e.target.value))
             }} value={inputValue} type="number"/>
@@ -33,7 +36,7 @@ const InputBlock: FC<BlockProps> = ({myRef , currencyArray, selectDefault, setIn
 }
 
 
-const Converter: FC<Props> = ({currencyArray, defaultFrom = {code: "UAH", rate: 1}}) => {
+const Converter: FC<Props> = ({currencyArray, defaultFrom = {code: "UAH", rate: 1}, styles}) => {
     const currencyMap: Map<string, number> = new Map(currencyArray.map(item => [item.code, item.rate]))
 
     const [select1, setSelect1] = useState<string>("USD")
@@ -66,7 +69,7 @@ const Converter: FC<Props> = ({currencyArray, defaultFrom = {code: "UAH", rate: 
     }, [inp1, inp2, select1, select2])
 
     return (
-        <div>
+        <div className={"exchangeRates"}>
             <InputBlock
                 myRef={inp1Ref}
                 currencyArray={currencyArray}
