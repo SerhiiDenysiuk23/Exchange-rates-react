@@ -1,10 +1,17 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {Currency} from "../types/currency";
 
-const Header = () => {
+const Header: FC<{currencyArray: Currency[]}> = ({currencyArray}) => {
     return (
-        <div>
-            
-        </div>
+        <header className={"header"}>
+            <ul>
+                {
+                   currencyArray.map((item, id) => {
+                       return <li key={id}>{item.code} {item.rate}</li>
+                   })
+                }
+            </ul>
+        </header>
     );
 };
 
